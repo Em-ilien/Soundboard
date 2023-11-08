@@ -16,12 +16,12 @@
   .sound-button {
     padding: 1em;
     max-width: 15em;
+    min-width: 10em;
     font-size: 1em;
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;
     border: none;
     cursor: pointer;
-    min-width: 150px;
     flex: 1;
     border-radius: 0.5em;
     text-shadow: 1px 1px 1px #000;

@@ -21,7 +21,7 @@
     position: fixed;
     bottom: 2em;
     right: 2em;
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: #09b509;
     border-radius: 50%;
     padding: 1.5em;
     font-size: 0.625em;
@@ -30,7 +30,7 @@
   }
 
   .new:active {
-    background: linear-gradient(135deg, #2980b9, #236fa5);
+    background: linear-gradient(135deg, #0a950a, #099909);
     scale: 0.95;
   }
 

@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: stretch;
     width: fit-content;
-    margin: 1.5em 0.5em;
+    margin: 1.5em 1.5em 0 1em;
     width: 12em;
     user-select: none;
   }

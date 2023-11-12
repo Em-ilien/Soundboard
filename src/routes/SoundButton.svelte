@@ -15,8 +15,11 @@
 <style>
   .sound-button {
     padding: 1em;
+    margin: 0.75em 0;
     max-width: 15em;
     min-width: 10em;
+    min-height: 2em;
+    max-height: 5em;
     font-size: 1em;
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;

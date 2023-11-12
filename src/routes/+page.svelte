@@ -62,6 +62,7 @@
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -72,12 +73,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1.5em;
     justify-content: center;
     align-items: stretch;
-    max-height: calc(100vh - 3em);
+    gap: 0 1.5em;
     width: calc(100vw - 3em);
-    margin: 1.5em;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 1em;
     user-select: none;
   }
 

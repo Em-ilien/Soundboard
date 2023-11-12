@@ -1,46 +1,12 @@
 <script>
+  import { soundboards } from "./../soundboardsStore.js";
+  import NewModal from "./NewModal.svelte";
   import SoundboardsList from "./SoundboardsList.svelte";
   import AudioPlayer from "./AudioPlayer.svelte";
   import SoundButton from "./SoundButton.svelte";
-
-  $: sounds = soundboards[currentSoundboardIndex].sounds;
+  import New from "./New.svelte";
 
   let currentSoundboardIndex = 0;
-  let soundboards = [
-    {
-      name: "Default",
-      sounds: [
-        { name: "Fart", soundFile: "sounds/fart.wav" },
-        { name: "Gay", soundFile: "sounds/gay.wav" },
-        { name: "Ok", soundFile: "sounds/ok.wav" },
-      ],
-    },
-    {
-      name: "Second",
-      sounds: [
-        { name: "Second 1", soundFile: "sounds/fart.wav" },
-        { name: "Second 2", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-        { name: "Other one very long", soundFile: "sounds/fart.wav" },
-      ],
-    },
-  ];
 
   let src = "";
 
@@ -55,22 +21,30 @@
   function onSwitchSoundboard(event) {
     currentSoundboardIndex = event.detail.index;
   }
+
+  let onNewModalOpened = false;
+  function onNew() {
+    onNewModalOpened = true;
+  }
 </script>
 
 <div class="app">
   <SoundboardsList
-    {soundboards}
     bind:currentSoundboardIndex
     on:switchSoundboard={onSwitchSoundboard}
   />
 
   <div class="soundboard">
-    {#each sounds as sound}
+    {#each $soundboards[currentSoundboardIndex].sounds as sound}
       <SoundButton {sound} on:play={onPlay} />
     {/each}
   </div>
 
   <AudioPlayer {src} />
+
+  <New on:new={onNew} />
+
+  <NewModal bind:onNewModalOpened bind:currentSoundboardIndex />
 </div>
 
 <svelte:head>
@@ -104,5 +78,21 @@
     max-height: calc(100vh - 3em);
     width: calc(100vw - 3em);
     margin: 1.5em;
+    user-select: none;
+  }
+
+  :global(.modal) ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em 0;
+  }
+
+  :global(.modal) li {
+    padding: 0 0.5em;
+    border-right: 1px solid #7d7d7d;
+  }
+  :global(.modal) li:last-child {
+    border-right: none;
   }
 </style>

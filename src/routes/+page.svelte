@@ -2,20 +2,16 @@
   import { soundboards } from "./../soundboardsStore.js";
   import NewModal from "./NewModal.svelte";
   import SoundboardsList from "./SoundboardsList.svelte";
-  import AudioPlayer from "./AudioPlayer.svelte";
   import SoundButton from "./SoundButton.svelte";
   import New from "./New.svelte";
 
   let currentSoundboardIndex = 0;
 
-  let src = "";
-
-  /**
-   * @param {{ soundFile: string; }} event
-   */
-  function onPlay(event) {
-    src = event.detail;
-    document.getElementById("audio").play();
+  async function onPlay(event) {
+    console.log(event.detail);
+    const audio = document.createElement("audio");
+    audio.src = event.detail;
+    await audio.play();
   }
 
   function onSwitchSoundboard(event) {
@@ -39,8 +35,6 @@
       <SoundButton {sound} on:play={onPlay} />
     {/each}
   </div>
-
-  <AudioPlayer {src} />
 
   <New on:new={onNew} />
 
@@ -77,7 +71,7 @@
     align-items: stretch;
     gap: 0 1.5em;
     width: calc(100vw - 3em);
-    height: 100vh;
+    max-height: 100vh;
     overflow-y: scroll;
     padding: 1em;
     user-select: none;

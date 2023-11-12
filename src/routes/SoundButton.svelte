@@ -34,4 +34,9 @@
   .sound-button:hover {
     background: linear-gradient(135deg, #2980b9, #236fa5);
   }
+
+  .sound-button:active {
+    background: linear-gradient(135deg, #236fa5, #1a5f91);
+    scale: 0.95;
+  }
 </style>

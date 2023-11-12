@@ -4,9 +4,9 @@ export const soundboards = writable([
   {
     name: "Default",
     sounds: [
-      { name: "Fart", soundFile: "sounds/fart.wav" },
-      { name: "Gay", soundFile: "sounds/gay.wav" },
-      { name: "Ok", soundFile: "sounds/ok.wav" },
+      { name: "Fart", soundFile: "sounds/fart.wav", key: "a" },
+      { name: "Gay", soundFile: "sounds/gay.wav", key: "b" },
+      { name: "Ok", soundFile: "sounds/ok.wav", key: "c" },
     ],
   },
   {

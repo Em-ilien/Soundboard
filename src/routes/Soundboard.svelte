@@ -5,7 +5,6 @@
   export let currentSoundboardIndex = 0;
 
   function onPlay(event) {
-    console.log(event.detail);
     const sound = new Audio(event.detail);
     sound.play();
   }

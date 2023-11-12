@@ -11,6 +11,7 @@
 
   let name = "";
   let file;
+  let key = "";
 
   $: createBtnLabel = `Créer le ${tabName.toLocaleLowerCase()}${
     name ? " « " + name + " »" : ""
@@ -23,6 +24,7 @@
       $soundboards[currentSoundboardIndex].sounds.push({
         name,
         soundFile: "sounds/fart.wav",
+        key,
       });
       soundboards.update((sbs) => sbs);
       onNewModalOpened = false;
@@ -71,6 +73,13 @@
           maxlength="50"
         />
         <input type="file" accept="audio/*" bind:value={file} required={true} />
+        <input
+          type="text"
+          placeholder="Touche"
+          bind:value={key}
+          required={true}
+          maxlength="1"
+        />
       </div>
     {:else}
       <div>

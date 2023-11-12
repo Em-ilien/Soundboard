@@ -7,15 +7,29 @@
 
   let currentSoundboardIndex = 0;
 
-  async function onPlay(event) {
+  function onPlay(event) {
     console.log(event.detail);
-    const audio = document.createElement("audio");
-    audio.src = event.detail;
-    await audio.play();
+    const sound = new Audio(event.detail);
+    sound.play();
   }
 
   function onSwitchSoundboard(event) {
     currentSoundboardIndex = event.detail.index;
+
+    const uniqueSoundFilesSet = new Set();
+    const soundsFiles = $soundboards[currentSoundboardIndex].sounds.filter(
+      (sound) => {
+        if (uniqueSoundFilesSet.has(sound.soundFile)) {
+          return false;
+        }
+        uniqueSoundFilesSet.add(sound.soundFile);
+        return true;
+      }
+    );
+
+    soundsFiles.forEach((file) => {
+      fetch(file.soundFile);
+    });
   }
 
   let onNewModalOpened = false;
